@@ -7,8 +7,12 @@ function onClick() {
 
 function createPrize() {
   if ($('#clickCounter').html() >= 10){
-    console.log("yes");
+    var newValue = $('#clickCounter').html() - 10;
+    $('#clickCounter').html(newValue);
+    clicks = newValue;
+    $('#errorMessage').empty();
+    $("#rewards").append('<div><img src="prize.png" alt="jesus" height="50px"></div>');
   } else {
-      $('#errorMessage').text("you need more clicks maan")
+    $('#errorMessage').text("you need more clicks maan")
   }
 }
