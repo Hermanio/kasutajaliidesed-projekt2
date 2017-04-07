@@ -1,8 +1,12 @@
 var clicks = 0;
+var prizeId = 0;
+var clickSound = new Audio("materials/click.wav");
 
 function onClick() {
     clicks += 1;
     $('#clickCounter').text(clicks);
+    clickSound.play();
+    clickSound.currentTime=0;
 }
 
 function createPrize() {
@@ -11,8 +15,13 @@ function createPrize() {
     $('#clickCounter').html(newValue);
     clicks = newValue;
     $('#errorMessage').empty();
-    $("#rewards").append('<div><img src="prize.png" alt="jesus" height="50px"></div>');
+    prizeId++;
+    $("#rewards").append('<div><img src="materials/prize.png" alt="jesus" height="50px" onClick="openPrize()"></div>');
   } else {
     $('#errorMessage').text("you need more clicks maan")
   }
+}
+
+function openPrize() {
+  console.log("yolo")
 }

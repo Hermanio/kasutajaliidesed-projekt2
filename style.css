@@ -21,9 +21,12 @@
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-#gameSide{
+#gameSide {
   text-align: center;
 }
-#errorMessage{
+#winSide {
+  text-align: center;
+}
+#errorMessage {
   color: #cc0000;
 }
