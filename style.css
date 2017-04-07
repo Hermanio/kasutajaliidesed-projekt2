@@ -24,3 +24,6 @@
 #gameSide{
   text-align: center;
 }
+#errorMessage{
+  color: #cc0000;
+}
