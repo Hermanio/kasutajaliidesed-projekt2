@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Chillilicker</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="jumbotron text-center">
-        <h1>Chilli Clicker</h1>
-        <p>The more you click, The more you save!</p>
-    </div>
-
-    <div class="container">
-
-        <div class="col-sm-6" id="gameSide">
-            <img src="materials/percentIcon.png" alt="jesus" onClick="onClick()">
-            <h1 id="clickCounter">0</h1>
-            <input type="submit" value="Win" class="orange-flat-button" onClick="createPrize()">
-            <p id="errorMessage"></p>
+    <link rel="stylesheet" href="spinner/spinner.css">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3">
+          <div class="spinner-container pt-5">
+            woo
+          </div>
         </div>
-
-        <div class="col-sm-6" id="winSide">
-            <h1>The Prizes</h1>
-            <p>With every 10 clicks you can win a random savings coupon</p>
-            <div id="rewards">
-
-            </div>
-        </div>
+      </div>
     </div>
     <script src="app.js"></script>
-</body>
-
+    <scirpt src="spinner/spinner.js"></script>
+  </body>
 </html>
