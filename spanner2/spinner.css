@@ -1,0 +1,28 @@
+.case-container {
+  position: absolute;
+  width: 100%;
+  background-color: #303030;
+  overflow: hidden;
+  user-select: none;
+}
+
+.card-container {
+  position: relative;
+  display:inline-block;
+  text-align: left;
+  will-change: transform;
+  image-rendering: auto;
+  user-select: none;
+}
+
+.case-inner {
+  white-space: nowrap;
+  position: relative;
+  font-size: 0;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+  transition: none 0s;
+  user-select: none;
+  cursor: default;
+  will-change: transform;
+}
