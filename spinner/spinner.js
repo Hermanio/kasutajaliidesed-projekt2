@@ -1,33 +1,33 @@
-const POSTERS_PER_ROW = 12;
-const RING_RADIUS = 250;
+const PRIZE_COUNT = 120;
 
-function setup_posters (row) {
-  var posterAngle = 360 / POSTERS_PER_ROW;
-  for (var i = 0; i < POSTERS_PER_ROW; i ++) {
-    var card = document.createElement('div');
-    card.className = 'card p-2';
-    const ringDiameter = document.querySelector('.spinner-container').offsetWidth
+function placePrizes(row) {
+  for (var i = 0; i < PRIZE_COUNT; i ++) {
+    var cardContainer = document.createElement('div');
+    cardContainer.className = 'card-container p-2 col-4';
 
-    var transform = 'rotateY(' + (posterAngle * i) + 'deg) translateZ(' + (ringDiameter / 2) + 'px)';
-    card.style.webkitTransform = transform;
-
+    const card = document.createElement('div')
+    card.className = 'card p-2'
+    cardContainer.appendChild(card)
     var header = card.appendChild(document.createElement('h4'));
     var content = card.appendChild(document.createElement('p'));
     header.textContent = i;
     content.textContent = 'bollocks';
 
-    card.style.left = (ringDiameter / 2) - (ringDiameter / POSTERS_PER_ROW)  + 'px'
-    card.style.width = (ringDiameter / POSTERS_PER_ROW * 2) + 'px'
-    card.style.height = (ringDiameter / POSTERS_PER_ROW * 2) + 'px'
-    row.appendChild(card);
+    row.appendChild(cardContainer);
   }
 
 }
 
-function init() {
-  setup_posters(document.querySelector('.spinner'));
+function spin() {
+  const cardWidth = document.querySelector('.card-container').offsetWidth
+  const winningCard = Math.round(Math.random() * PRIZE_COUNT)
+  console.log(winningCard)
+  const winningCardLocation = document.querySelector('.case-container').scrollWidth / PRIZE_COUNT * (winningCard - 1)
+  document.querySelector('.spinner').style.transform = `translateX(${-(winningCardLocation)}px)`
 }
 
-// call init once the document is fully loaded
+function init() {
+  placePrizes(document.querySelector('.spinner'));
+}
+
 window.addEventListener('load', init, false);
-window.addEventListener('resize', init, false);

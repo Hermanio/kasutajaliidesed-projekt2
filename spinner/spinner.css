@@ -1,40 +1,15 @@
-
-body {
-  font-family: 'Lucida Grande', Verdana, Arial;
-  font-size: 12px;
+.case-container {
+  background-color: #303030;
+  overflow: scroll;
+  user-select: none;
 }
 
-.spinner-container {
-  -webkit-perspective: 1500;
-
+.card-container {
+  display:inline-block;
 }
 
 .spinner {
-  background-color: rgba(0, 0, 0, 0.5);
-  transform-style: preserve-3d;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-name: y-spin;
-  animation-duration: 15s;
-}
-
-.spinner > :nth-child(odd) {
-  background-color: tomato;
-}
-
-.spinner > :nth-child(even) {
-  background-color: lightblue;
-}
-
-.card {
-  position: absolute;
-  opacity: 0.7;
-  color: rgba(0,0,0,0.9);
-  border-radius: 10px;
-}
-
-@-webkit-keyframes y-spin {
-  0%    { transform: rotateY(0deg); }
-  50%   { transform: rotateY(180deg); }
-  100%  { transform: rotateY(360deg); }
+  white-space: nowrap;
+  will-change: transform;
+  transition: transform 9.5s cubic-bezier(.3,.9975,.3,.9975);
 }
