@@ -19,11 +19,8 @@ function placePrizes(row) {
 }
 
 function spin() {
-  const cardWidth = document.querySelector('.card-container').offsetWidth
   const winningCard = Math.round(Math.random() * PRIZE_COUNT)
-  console.log(winningCard)
-  const winningCardLocation = document.querySelector('.case-container').scrollWidth / PRIZE_COUNT * (winningCard - 1)
-  document.querySelector('.spinner').style.transform = `translateX(${-(winningCardLocation)}px)`
+  document.querySelector('.spinner').style.transform = `translateX(${-(winningCard - 1) * 33.3333}%)`
 }
 
 function init() {
