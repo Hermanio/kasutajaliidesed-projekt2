@@ -3,7 +3,6 @@
     overflow-x: hidden;
     overflow-y: visible;
     user-select: none;
-    height:100vh;
 }
 
 .card-container {
@@ -16,17 +15,20 @@
     transition: transform 1.5s cubic-bezier(.3, .9975, .3, .9975);
 }
 
-#rays {
+.rays-container {
     position: absolute;
+    top: 0;
     left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: 500px;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
     z-index: -1;
 }
-
-.rays-animation {
+.rays {
+    width:auto;
+    height: 70vh;
     animation: background-rotate-animation 10s infinite linear;
 }
 
@@ -46,7 +48,7 @@
         background: #fffdf8;
     }
     100% {
-        transform: scale(1.5) translateY(200px);
+        transform: scale(1.2) translateY(200px);
         background: #ff6441;
     }
 }

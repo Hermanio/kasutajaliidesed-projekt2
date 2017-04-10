@@ -33,7 +33,7 @@ function openWinningItem(winningCard) {
   console.log(winningCard);
   var winningCardElement = document.getElementById("card-"+winningCard);
   winningCardElement.classList.add("winning-card-animation");
-  document.getElementById("rays").classList.remove("hidden");
+  document.getElementById("rays-container").classList.remove("hidden");
 }
 
 function removeAnimationFromLastWinningElement(winningElementNumber) {
