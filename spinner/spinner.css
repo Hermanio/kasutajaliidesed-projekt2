@@ -11,5 +11,24 @@
 .spinner {
   white-space: nowrap;
   will-change: transform;
-  transition: transform 9.5s cubic-bezier(.3,.9975,.3,.9975);
+  transition: transform 1.5s cubic-bezier(.3,.9975,.3,.9975);
+}
+
+.winning-card-animation {
+  animation: winning-card-keyframes 1.5s;
+  animation-fill-mode: forwards;
+  z-index: 69420;
+}
+
+@keyframes winning-card-keyframes {
+  0% {
+    transform: scale(1.0);
+    background: #fffdf8;
+    -webkit-transform: scale(1.0);
+  }
+  100% {
+    transform: scale(2.0);
+    background: #ff6441;
+    -webkit-transform: scale(2.0);
+  }
 }
