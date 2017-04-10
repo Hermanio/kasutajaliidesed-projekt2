@@ -1,6 +1,6 @@
 .case-container {
   background-color: #303030;
-  overflow: scroll;
+  overflow-x: hidden;
   user-select: none;
 }
 
@@ -11,24 +11,17 @@
 .spinner {
   white-space: nowrap;
   will-change: transform;
-  transition: transform 1.5s cubic-bezier(.3,.9975,.3,.9975);
+  transition: transform 1.5s ease-out;
 }
 
-.winning-card-animation {
-  animation: winning-card-keyframes 1.5s;
+.card-winning {
+  animation: winning-card-keyframes .5s;
   animation-fill-mode: forwards;
-  z-index: 69420;
+  animation-delay: 1.25s;
+  z-index: 2;
 }
 
 @keyframes winning-card-keyframes {
-  0% {
-    transform: scale(1.0);
-    background: #fffdf8;
-    -webkit-transform: scale(1.0);
-  }
-  100% {
-    transform: scale(2.0);
-    background: #ff6441;
-    -webkit-transform: scale(2.0);
-  }
+  0% { transform: scale(1.0); }
+  100% { transform: scale(1.4); }
 }

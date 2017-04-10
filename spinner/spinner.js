@@ -20,26 +20,16 @@ function placePrizes(row) {
 function spin() {
   clickSound.play();
   clickSound.currentTime=0;
-  const winningCard = Math.round(Math.random() * PRIZE_COUNT);
-  removeAnimationFromLastWinningElement(lastWinningCard);
-  lastWinningCard = winningCard;
-  console.log(winningCard);
+  const winningCard = Math.round(Math.random() * (PRIZE_COUNT - 1));
+  [].slice.call(document.getElementsByClassName('card'))
+    .map(card => {
+      card.classList.remove('card-winning')
+      return card
+    })
+    .map((card, index) => {
+      if (index === winningCard) card.classList.add('card-winning')
+    })
   document.querySelector('.spinner').style.transform = `translateX(${-(winningCard - 1) * 33.3333}%)`
-  window.setTimeout(openWinningItem, 1500, winningCard)
-}
-
-function openWinningItem(winningCard) {
-  //alert("open winning item");
-  console.log(winningCard);
-  var winningCardElement = document.getElementById("card-"+winningCard);
-  winningCardElement.classList.add("winning-card-animation");
-
-}
-
-function removeAnimationFromLastWinningElement(winningElementNumber) {
-  if (winningElementNumber) {
-      document.getElementById("card-"+winningElementNumber).classList.remove("winning-card-animation");
-  }
 }
 
 function init() {
@@ -47,4 +37,3 @@ function init() {
 }
 
 window.addEventListener('load', init, false)
-

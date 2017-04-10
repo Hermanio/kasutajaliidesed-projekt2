@@ -2,7 +2,6 @@
 function Card({ imageSrc, headerText, textContent }) {
   const card = document.createElement('div')
   card.className = 'card';
-  card.id = "card-"+headerText;
 
   const image = card.appendChild(document.createElement('img'));
   image.className = 'card-img-top img-fluid'
