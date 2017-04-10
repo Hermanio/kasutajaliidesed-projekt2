@@ -4,7 +4,6 @@
     <title>Chillilicker</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="spinner/spinner.css">
   </head>
   <body>
@@ -12,12 +11,16 @@
       <div class="row">
         <div class="col-12 col-md-8 offset-md-2 col-xl-6 offset-xl-3">
           <div class="case-container py-5">
+            <button class="btn btn-success" onClick="spin()" >SPANN</button>
+
             <div class="spinner">
             </div>
           </div>
-          <button class="btn btn-success" onClick="spin()" >SPANN</button>
         </div>
       </div>
+    </div>
+    <div id="rays-container" class="rays-container hidden">
+      <img class="rays" src="http://scripty2.com/images/rays-main.png">
     </div>
     <script src="app.js"></script>
     <script src="spinner/spinner.js"></script>

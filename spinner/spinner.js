@@ -1,6 +1,5 @@
 const PRIZE_COUNT = 120
-var clickSound = new Audio("resources/click.wav");
-var lastWinningCard;
+const clickSound = new Audio("resources/click.wav")
 
 function placePrizes(row) {
   for (let i = 0; i < PRIZE_COUNT; i ++) {
@@ -18,10 +17,10 @@ function placePrizes(row) {
 }
 
 function spin() {
-  clickSound.play();
-  clickSound.currentTime=0;
-  const winningCard = Math.round(Math.random() * (PRIZE_COUNT - 1));
-  [].slice.call(document.getElementsByClassName('card'))
+  clickSound.play()
+  clickSound.currentTime = 0
+  const winningCard = Math.round(Math.random() * (PRIZE_COUNT - 1))
+  Array.prototype.slice.call(document.getElementsByClassName('card'))
     .map(card => {
       card.classList.remove('card-winning')
       return card
