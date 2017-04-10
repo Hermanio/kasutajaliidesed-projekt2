@@ -33,12 +33,13 @@ function openWinningItem(winningCard) {
   console.log(winningCard);
   var winningCardElement = document.getElementById("card-"+winningCard);
   winningCardElement.classList.add("winning-card-animation");
-
+  document.getElementById("rays-container").classList.remove("hidden");
 }
 
 function removeAnimationFromLastWinningElement(winningElementNumber) {
   if (winningElementNumber) {
       document.getElementById("card-"+winningElementNumber).classList.remove("winning-card-animation");
+      document.getElementById("card-"+winningElementNumber).classList.remove("background-effect");
   }
 }
 
@@ -46,5 +47,5 @@ function init() {
   placePrizes(document.querySelector('.spinner'))
 }
 
-window.addEventListener('load', init, false)
+window.addEventListener('load', init, false);
 
