@@ -1,8 +1,8 @@
-var deathCounter = document.getElementById("deaths")
-var totalDeaths = 0
-setInterval(setTime, 1000)
+const deathCounter = document.querySelector('.deaths-counter')
+let totalDeaths = 0
+setInterval(killCat, 1000)
 
-function setTime(){
+function killCat(){
   ++totalDeaths
   deathCounter.innerHTML = totalDeaths % 60
 }
