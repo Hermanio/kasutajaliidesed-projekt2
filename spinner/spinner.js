@@ -28,7 +28,7 @@ window.addEventListener('load', init, false)
 
 // Get a random int in range [start;end)
 function randInt(start, end) {
-    return start + Math.floor(Math.random() * (end - start));
+    return start + Math.floor(Math.random() * (end - start))
 }
 
 // Get a random card index that is atleast MINIMUM_DISTANCE away from currentIndex
@@ -48,18 +48,17 @@ function getDistantIndex(currentIndex) {
 
 var winningIndex = 0
 
-document.querySelector('#spin-btn').onclick = function (event) {
+document.querySelector('#spin-btn').onclick = (event) => {
     let btn = event.target
     btn.disabled = true
     winningIndex = getDistantIndex(winningIndex)
-    console.log(winningIndex)
 
     clickSound.currentTime = 0
     clickSound.play()
 
     const oldWinnings = document.getElementsByClassName('card-winning')
-    for (let i = 0; i < oldWinnings.length; i++) {
-        oldWinnings[i].classList.remove('card-winning')
+    for (let card of oldWinnings) {
+        card.classList.remove('card-winning')
     }
 
     const winningCard = document.getElementsByClassName('card')[winningIndex]
@@ -71,13 +70,13 @@ document.querySelector('#spin-btn').onclick = function (event) {
 
     document.querySelector('.spinner').style.transform = `translateX(${-(winningIndex - 1) * 33.3333}%)`
 
-    setTimeout(function () {
+    setTimeout(() => {
         spinningSound.pause()
         winSound.currentTime = 0
         winSound.play()
     }, 9500)
 
-    setTimeout(function () {
+    setTimeout(() => {
         btn.disabled = false
     }, 13000)
 }
