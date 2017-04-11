@@ -65,22 +65,21 @@ document.querySelector('#spin-btn').onclick = function (event) {
 
     const winningCard = document.getElementsByClassName('card')[winningIndex]
     winningCard.childNodes[0].src = 'https://media.giphy.com/media/3o85xoi6nNqJQJ95Qc/giphy.gif'
+    winningCard.classList.add('card-winning')
 
     rattlingSound.currentTime = 0
     rattlingSound.play()
 
-    const spinner = document.querySelector('.spinner')
+    document.querySelector('.spinner').style.transform = `translateX(${-(winningIndex - 1) * 33.3333}%)`
+}
 
-    spinner.ontransitionend = function () {
-        document.querySelector('.spinner').ontransitionend = null
-        rattlingSound.pause()
-        winningCard.classList.add('card-winning')
+document.querySelector('.spinner').ontransitionend = function () {
+    rattlingSound.pause()
 
-        winSound.currentTime = 0
-        winSound.onended = function () {
-            btn.disabled = false
-        }
-        winSound.play()
-    }
-    spinner.style.transform = `translateX(${-(winningIndex - 1) * 33.3333}%)`
+    winSound.currentTime = 0
+    winSound.play()
+}
+
+winSound.onended = function () {
+    document.querySelector('#spin-btn').disabled = false
 }

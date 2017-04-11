@@ -17,6 +17,7 @@
 .card-winning {
   animation: winning-card-scale-keyframes .5s;
   animation-fill-mode: forwards;
+  animation-delay: 9.25s;
   z-index: 2;
 }
 
@@ -36,6 +37,7 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
+  animation-delay: 9.25s !important;
   animation: winning-card-burst-keyframes 2.5s linear infinite;
 }
 
