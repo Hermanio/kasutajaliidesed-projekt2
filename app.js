@@ -4,5 +4,5 @@ setInterval(killCat, 1000)
 
 function killCat(){
   ++totalDeaths
-  deathCounter.innerHTML = totalDeaths % 60
+  deathCounter.innerHTML = totalDeaths
 }
