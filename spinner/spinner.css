@@ -1,6 +1,6 @@
 .case-container {
   background-color: #303030;
-  overflow-x: hidden;
+  overflow: hidden;
   user-select: none;
 }
 
