@@ -2,6 +2,7 @@
   background-color: #303030;
   overflow: hidden;
   user-select: none;
+  border-radius: 1rem 1rem 0 0;
 }
 
 .card-container {
@@ -44,4 +45,8 @@
 @keyframes winning-card-burst-keyframes {
   0% { transform: rotate(0deg) scale(3); opacity: 0.5; }
   100% { transform: rotate(360deg) scale(3); opacity: 1; }
+}
+
+.spin-button {
+  border-radius: 0 0 1rem 1rem;
 }
