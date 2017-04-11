@@ -1,5 +1,8 @@
 const PRIZE_COUNT = 120
 const clickSound = new Audio("resources/click.wav")
+const saveCounter = document.querySelector('.saves-counter')
+const spinButton = document.querySelector('.spin-button')
+let totalSaves = 0
 
 function placePrizes(row) {
   for (let i = 0; i < PRIZE_COUNT; i ++) {
@@ -35,6 +38,13 @@ function spin() {
       }
     })
   document.querySelector('.spinner').style.transform = `translateX(${-(winningCard - 1) * 33.3333}%)`
+  spinButton.classList.add('disabled')
+  setTimeout(incrementLives, 9250)
+}
+
+function incrementLives() {
+  saveCounter.innerHTML = ++totalSaves
+  spinButton.classList.remove('disabled')
 }
 
 function init() {
