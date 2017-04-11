@@ -50,3 +50,23 @@
 .spin-button {
   border-radius: 0 0 1rem 1rem;
 }
+
+.case-container::before {
+  content: '';
+  height: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid white;
+  border-bottom: 1rem solid white;
+}
+
+button {
+  border: none !important;
+}
