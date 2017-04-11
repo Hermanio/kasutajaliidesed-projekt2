@@ -2,6 +2,9 @@ const PRIZE_COUNT = 120
 const LAST_CARD = PRIZE_COUNT - 1
 const MINIMUM_DISTANCE = 50
 const clickSound = new Audio("resources/click.wav")
+const winSound = new Audio("resources/ovation.wav")
+const rattlingSound = new Audio("resources/rattling.wav")
+rattlingSound.repeat = true
 
 function placePrizes(row) {
   for (let i = 0; i < PRIZE_COUNT; i ++) {
@@ -63,11 +66,21 @@ document.querySelector('#spin-btn').onclick = function (event) {
     const winningCard = document.getElementsByClassName('card')[winningIndex]
     winningCard.childNodes[0].src = 'https://media.giphy.com/media/3o85xoi6nNqJQJ95Qc/giphy.gif'
 
+    rattlingSound.currentTime = 0
+    rattlingSound.play()
+
     const spinner = document.querySelector('.spinner')
+
     spinner.ontransitionend = function () {
-        btn.disabled = false
-        winningCard.classList.add('card-winning')
         document.querySelector('.spinner').ontransitionend = null
+        rattlingSound.pause()
+        winningCard.classList.add('card-winning')
+
+        winSound.currentTime = 0
+        winSound.onended = function () {
+            btn.disabled = false
+        }
+        winSound.play()
     }
     spinner.style.transform = `translateX(${-(winningIndex - 1) * 33.3333}%)`
 }
