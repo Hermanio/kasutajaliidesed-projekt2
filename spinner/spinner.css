@@ -11,64 +11,37 @@
 .spinner {
   white-space: nowrap;
   will-change: transform;
-  transition: transform 1.5s ease-out;
+  transition: transform 9.5s ease-out;
 }
 
 .card-winning {
-  animation: winning-card-keyframes .5s;
+  animation: winning-card-scale-keyframes .5s;
   animation-fill-mode: forwards;
-  animation-delay: 1.25s;
+  animation-delay: 9.25s;
   z-index: 2;
 }
 
-@keyframes winning-card-keyframes {
+@keyframes winning-card-scale-keyframes {
   0% { transform: scale(1.0); }
   100% { transform: scale(1.4); }
 }
 
-.rays-container {
+
+.card-winning::before {
+  background-color: rgba(25, 99, 199, 0.2);
+  background: url('http://scripty2.com/images/rays-main.png') no-repeat;
+  background-size: cover;
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
   z-index: -1;
-}
-.rays {
-  width:auto;
-  height: 70vh;
-  animation: background-rotate-animation 10s infinite linear;
-}
-
-.winning-card-animation {
-  animation: winning-card-keyframes 1.5s;
-  animation-fill-mode: forwards;
-  z-index: 100;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  animation-delay: 9.25s !important;
+  animation: winning-card-burst-keyframes 2.5s linear infinite;
 }
 
-.hidden {
-  display: none;
-}
-
-@keyframes winning-card-keyframes {
-  0% {
-    transform: scale(1.0) ;
-    background: #fffdf8;
-  }
-  100% {
-    transform: scale(1.2) translateY(200px);
-    background: #ff6441;
-  }
-}
-
-@keyframes background-rotate-animation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes winning-card-burst-keyframes {
+  0% { transform: rotate(0deg) scale(3); opacity: 0.5; }
+  100% { transform: rotate(360deg) scale(3); opacity: 1; }
 }

@@ -26,7 +26,13 @@ function spin() {
       return card
     })
     .map((card, index) => {
-      if (index === winningCard) card.classList.add('card-winning')
+      if (index === winningCard) {
+        card.classList.add('card-winning')
+        card.removeChild(card.childNodes[0])
+        const image = card.appendChild(document.createElement('img'))
+        image.className = 'card-img-top img-fluid'
+        image.src = 'https://media.giphy.com/media/3o85xoi6nNqJQJ95Qc/giphy.gif'
+      }
     })
   document.querySelector('.spinner').style.transform = `translateX(${-(winningCard - 1) * 33.3333}%)`
 }
