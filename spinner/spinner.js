@@ -1,4 +1,6 @@
 const PRIZE_COUNT = 120
+const LAST_CARD = PRIZE_COUNT - 1
+const MINIMUM_DISTANCE = 50
 const clickSound = new Audio("resources/click.wav")
 
 function placePrizes(row) {
@@ -16,29 +18,56 @@ function placePrizes(row) {
   }
 }
 
-function spin() {
-  clickSound.play()
-  clickSound.currentTime = 0
-  const winningCard = Math.round(Math.random() * (PRIZE_COUNT - 1))
-  Array.prototype.slice.call(document.getElementsByClassName('card'))
-    .map(card => {
-      card.classList.remove('card-winning')
-      return card
-    })
-    .map((card, index) => {
-      if (index === winningCard) {
-        card.classList.add('card-winning')
-        card.removeChild(card.childNodes[0])
-        const image = card.appendChild(document.createElement('img'))
-        image.className = 'card-img-top img-fluid'
-        image.src = 'https://media.giphy.com/media/3o85xoi6nNqJQJ95Qc/giphy.gif'
-      }
-    })
-  document.querySelector('.spinner').style.transform = `translateX(${-(winningCard - 1) * 33.3333}%)`
-}
-
 function init() {
   placePrizes(document.querySelector('.spinner'))
 }
 
 window.addEventListener('load', init, false)
+
+// Get a random int in range [start;end)
+function randInt(start, end) {
+    return start + Math.floor(Math.random() * (end - start));
+}
+
+// Get a random card index that is atleast MINIMUM_DISTANCE away from currentIndex
+function getDistantIndex(currentIndex) {
+    if (LAST_CARD - currentIndex < MINIMUM_DISTANCE) {
+        return randInt(0, currentIndex - MINIMUM_DISTANCE)
+    }
+    if (currentIndex - MINIMUM_DISTANCE < 0) {
+        return randInt(currentIndex + MINIMUM_DISTANCE, LAST_CARD)
+    }
+    if (Math.random() < .5) {
+        return randInt(0, currentIndex - MINIMUM_DISTANCE)
+    } else {
+        return randInt(currentIndex + MINIMUM_DISTANCE, LAST_CARD)
+    }
+}
+
+var winningIndex = 0
+
+document.querySelector('#spin-btn').onclick = function (event) {
+    let btn = event.target
+    btn.disabled = true
+    winningIndex = getDistantIndex(winningIndex)
+    console.log(winningIndex)
+
+    clickSound.currentTime = 0
+    clickSound.play()
+
+    const oldWinnings = document.getElementsByClassName('card-winning')
+    for (let i = 0; i < oldWinnings.length; i++) {
+        oldWinnings[i].classList.remove('card-winning')
+    }
+
+    const winningCard = document.getElementsByClassName('card')[winningIndex]
+    winningCard.childNodes[0].src = 'https://media.giphy.com/media/3o85xoi6nNqJQJ95Qc/giphy.gif'
+
+    const spinner = document.querySelector('.spinner')
+    spinner.ontransitionend = function () {
+        btn.disabled = false
+        winningCard.classList.add('card-winning')
+        document.querySelector('.spinner').ontransitionend = null
+    }
+    spinner.style.transform = `translateX(${-(winningIndex - 1) * 33.3333}%)`
+}
