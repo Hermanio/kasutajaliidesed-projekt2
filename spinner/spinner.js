@@ -3,8 +3,8 @@ const LAST_CARD = PRIZE_COUNT - 1
 const MINIMUM_DISTANCE = 50
 const clickSound = new Audio("resources/click.wav")
 const winSound = new Audio("resources/ovation.wav")
-const rattlingSound = new Audio("resources/rattling.wav")
-rattlingSound.repeat = true
+const rattlingSound = new Audio("resources/drumroll.wav")
+rattlingSound.loop = true
 
 function placePrizes(row) {
   for (let i = 0; i < PRIZE_COUNT; i ++) {
@@ -71,15 +71,14 @@ document.querySelector('#spin-btn').onclick = function (event) {
     rattlingSound.play()
 
     document.querySelector('.spinner').style.transform = `translateX(${-(winningIndex - 1) * 33.3333}%)`
-}
 
-document.querySelector('.spinner').ontransitionend = function () {
-    rattlingSound.pause()
-
-    winSound.currentTime = 0
-    winSound.play()
-}
-
-winSound.onended = function () {
-    document.querySelector('#spin-btn').disabled = false
+    setTimeout(function () {
+        rattlingSound.pause()
+        winSound.currentTime = 0
+        winSound.play()
+    }, 9500)
+    
+    setTimeout(function () {
+        btn.disabled = false
+    }, 13000)
 }
