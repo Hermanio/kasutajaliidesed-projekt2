@@ -35,13 +35,13 @@ function randInt(start, end) {
 // Get a random card index that is atleast MINIMUM_DISTANCE away from currentIndex
 function getDistantIndex(currentIndex) {
     if (LAST_CARD - currentIndex < MINIMUM_DISTANCE) {
-        return randInt(0, currentIndex - MINIMUM_DISTANCE)
+        return randInt(1, currentIndex - MINIMUM_DISTANCE)
     }
-    if (currentIndex - MINIMUM_DISTANCE < 0) {
+    if (currentIndex - MINIMUM_DISTANCE < 1) {
         return randInt(currentIndex + MINIMUM_DISTANCE, LAST_CARD)
     }
     if (Math.random() < .5) {
-        return randInt(0, currentIndex - MINIMUM_DISTANCE)
+        return randInt(1, currentIndex - MINIMUM_DISTANCE)
     } else {
         return randInt(currentIndex + MINIMUM_DISTANCE, LAST_CARD)
     }
