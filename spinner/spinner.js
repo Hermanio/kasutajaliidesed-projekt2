@@ -1,4 +1,7 @@
 const clickSound = new Audio("resources/click.wav")
+const winSound = new Audio("resources/ovation.wav")
+const nyanSound = new Audio("resources/nyan.ogg")
+const spinningSound = new Audio("resources/drumroll.wav")
 const saveCounter = document.querySelector('.saves-counter')
 const spinButton = document.querySelector('.spin-button')
 let totalSaves = 0
@@ -19,8 +22,16 @@ function placePrizes(row) {
 }
 
 function spin() {
+  stopNyanMode()
+  spinningSound.pause()
+  nyanSound.pause()
+  winSound.pause();
+  document.body.classList.remove("nyan-background");
+
   clickSound.play()
   clickSound.currentTime = 0
+  spinningSound.play()
+  spinningSound.currentTime = 0
   const winningCard = Math.round(Math.random() * (catsList.length - 1))
   Array.prototype.slice.call(document.getElementsByClassName('card'))
     .map(card => {
@@ -34,12 +45,42 @@ function spin() {
   spinButton.classList.add('disabled')
   spinButton.disabled = true
   setTimeout(incrementLives, 9250)
+  setTimeout(function () {
+      if (Math.random() >= 0.7) {
+          startNyanMode()
+      } else {
+          winSound.play()
+          winSound.currentTime = 0
+      }
+  }, 9250)
+
 }
 
 function incrementLives() {
   saveCounter.innerHTML = ++totalSaves
   spinButton.classList.remove('disabled')
   spinButton.disabled = false
+}
+
+function startNyanMode() {
+    document.getElementById("heading-part").classList.add("nyan-background-gif")
+    nyanSound.play()
+    nyanSound.currentTime = 0
+    document.body.classList.add("nyan-background")
+    setTimeout(function () {
+      stopNyanMode()
+    },7000)
+}
+
+function stopNyanMode() {
+    nyanSound.pause()
+    document.body.classList.remove("nyan-background")
+    document.getElementById("heading-part").classList.remove("nyan-background-gif")
+
+}
+
+function stopPreviousAudio() {
+
 }
 
 function init() {
