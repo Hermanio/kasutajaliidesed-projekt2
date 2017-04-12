@@ -46,7 +46,7 @@ function spin() {
   spinButton.disabled = true
   setTimeout(incrementLives, 9250)
   setTimeout(function () {
-      if (Math.random() >= 0.7) {
+      if (Math.random() >= 0.5) {
           startNyanMode()
       } else {
           winSound.play()
